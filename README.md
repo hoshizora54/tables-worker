@@ -1,3 +1,5 @@
+# ВИДЕО С РАБОТОЙ СЕРВИСА https://disk.yandex.ru/d/nOSe3Br1zOI6eg
+
 # LLM Tools: интерактивная работа с Excel/CSV через SQL и YandexGPT
 
 Прототип, который даёт LLM «инструменты» для работы с табличными данными:
