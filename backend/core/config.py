@@ -14,7 +14,7 @@ class Settings:
         self.POSTGRES_PORT = int(os.getenv("POSTGRES_PORT", "5432"))
         self.POSTGRES_DB = os.getenv("POSTGRES_DB", "postgres")
         self.POSTGRES_USER = os.getenv("POSTGRES_USER", "postgres")
-        self.POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD", "")
+        self.POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD", "123")
         if self.DATABASE_URL == "" or self.DATABASE_URL.startswith("postgresql://auto"):
             self.DATABASE_URL = (
                 f"postgresql://{self.POSTGRES_USER}:{self.POSTGRES_PASSWORD}@{self.POSTGRES_HOST}:{self.POSTGRES_PORT}/{self.POSTGRES_DB}"

@@ -82,4 +82,31 @@ export async function sqlQuery(sql: string, params?: Record<string, any>) {
   return res.json();
 }
 
+export async function agentQuery(task: string, table_hint?: string) {
+  try {
+    const res = await fetch(`${BASE_URL}/v1/llm/agent`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ task, table_hint })
+    });
+    if (!res.ok) {
+      const errorText = await res.text();
+      let errorMessage = errorText;
+      try {
+        const errorJson = JSON.parse(errorText);
+        errorMessage = errorJson.detail || errorJson.message || errorText;
+      } catch {
+        // Если не JSON, используем текст как есть
+      }
+      throw new Error(errorMessage || `HTTP ${res.status}: ${res.statusText}`);
+    }
+    return res.json();
+  } catch (error: any) {
+    if (error.message) {
+      throw error;
+    }
+    throw new Error(`Ошибка сети: ${error.message || 'Не удалось подключиться к серверу'}`);
+  }
+}
+
 

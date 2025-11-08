@@ -11,6 +11,7 @@ from backend.services.llm_service import (
 )
 from backend.core.db import run_select, run_execute_rowcount
 from backend.services.versioning_service import snapshot_table
+from backend.services.agent_service import agent_loop
 
 
 router = APIRouter()
@@ -144,6 +145,20 @@ async def nl_execute(req: NLExecuteRequest):
                     outputs.append({"type": "write", "sql": stmt, "error": str(e)})
 
         return {"results": outputs, "raw": sql_blob}
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+
+@router.post("/agent")
+async def agent_query(req: NLQuery):
+    """
+    Агентский эндпоинт: обрабатывает запрос на естественном языке,
+    автоматически выбирает и вызывает необходимые инструменты.
+    Это основной эндпоинт для интерактивного анализа данных.
+    """
+    try:
+        result = agent_loop(req.task, table_hint=req.table_hint, max_iterations=5)
+        return result
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
