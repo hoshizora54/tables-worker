@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+
+# Environment / secrets
+.env
+.env.*
+
+# Data and local DB artifacts (оставь нужное по ситуации)
+data/*.db
+data/*.sqlite
+data/*.sqlite3
+data/**/*.tmp
+
+# Jupyter / IPython
+.ipynb_checkpoints/
+
+# Logs
+logs/
+*.log
+
+# Frontend (Node / Vite)
+node_modules/
+frontend-vue/node_modules/
+dist/
+frontend-vue/dist/
+
+# OS / Editor
+.DS_Store
+*.swp
+*.swo
+.idea/
+.vscode/
+
+
+.env

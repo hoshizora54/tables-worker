@@ -1,0 +1,37 @@
+[
+  {
+    "dataset": "sql-create-context",
+    "question": "How many heads of the departments are older than 56 ?",
+    "used_sql": true,
+    "agent_sql": "SELECT count(*) FROM test_people WHERE Возраст (лет) > 56",
+    "elapsed": 5.195355176925659
+  },
+  {
+    "dataset": "sql-create-context",
+    "question": "List the name, born state and age of the heads of departments ordered by age.",
+    "used_sql": true,
+    "agent_sql": "SELECT Имя, Возраст (лет), Идентификатор FROM test_people WHERE Тип текста = 'Руководитель отдела' ORDER BY Возраст (лет)",
+    "elapsed": 7.234633922576904
+  },
+  {
+    "dataset": "sql-create-context",
+    "question": "List the creation year, name and budget of each department.",
+    "used_sql": true,
+    "agent_sql": "SELECT * FROM train",
+    "elapsed": 2.5609099864959717
+  },
+  {
+    "dataset": "sql-create-context",
+    "question": "What are the maximum and minimum budget of the departments?",
+    "used_sql": true,
+    "agent_sql": "SELECT MAX(Цена), MIN(Цена) FROM 1810_2",
+    "elapsed": 5.6302878856658936
+  },
+  {
+    "dataset": "sql-create-context",
+    "question": "What is the average number of employees of the departments whose rank is between 10 and 15?",
+    "used_sql": true,
+    "agent_sql": "SELECT avg(developer_experience) FROM train WHERE developer_experience BETWEEN 10 AND 15",
+    "elapsed": 8.812260866165161
+  }
+]
